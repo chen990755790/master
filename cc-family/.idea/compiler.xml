@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cc-boot" />
+        <module name="cc-desgin" />
+        <module name="cc-look" />
+        <module name="cc-spring" />
+        <module name="cc-thread" />
+        <module name="cc-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cc-boot" target="1.5" />
+      <module name="cc-desgin" target="1.5" />
+      <module name="cc-family" target="1.5" />
+      <module name="cc-look" target="1.5" />
+      <module name="cc-spring" target="1.8" />
+      <module name="cc-thread" target="1.5" />
+      <module name="cc-web" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

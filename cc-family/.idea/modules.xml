@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cc-boot/cc-boot.iml" filepath="$PROJECT_DIR$/cc-boot/cc-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-desgin/cc-desgin.iml" filepath="$PROJECT_DIR$/cc-desgin/cc-desgin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-family.iml" filepath="$PROJECT_DIR$/cc-family.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-look/cc-look.iml" filepath="$PROJECT_DIR$/cc-look/cc-look.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-spring/cc-spring.iml" filepath="$PROJECT_DIR$/cc-spring/cc-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-thread/cc-thread.iml" filepath="$PROJECT_DIR$/cc-thread/cc-thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cc-web/cc-web.iml" filepath="$PROJECT_DIR$/cc-web/cc-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JEUI-jeDate日期控件-文档API</title>
+    <meta name="keywords" content="jedete,jeDete,日期控件,日历控件">
+    <meta name="description" content="jeDate除了包含初始化日期加减N、日期标注点、输入框可以直接输入时间、设定年月（YYYY-MM）、日期范围限制、开始日期设定、自定义日期格式、时间戳转换、当天的前后若干天返回、时分秒选择、智能响应、自动纠错、节日识别，操作等常规功能外，根据不同的日期格式，显示不同内容，还拥有更多趋近完美的解决方案。">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/jeui.css"  media="all">
+    <link rel="stylesheet" href="css/doc.css"  media="all">
+    <link rel="stylesheet" href="css/skin/jedate.css"  media="all">
+    <script src="js/jquery.min.js" charset="utf-8"></script>
+    <script src="js/prettify.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/modules/jeDate.js"></script>
+    <style type="text/css">
+        .wicon {
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAQCAYAAADj5tSrAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8xNS8xNGnF/oAAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAAAoElEQVQ4jWPceOnNfwYqAz9dYRQ+E7UtwAaGjyUsDAyYYUgJ2HT5LXZLcEmSCnA6duOlN///////H0bDALl8dPH/////Z8FuNW6Qtvw2nL3lyjsGBgYGhlmRqnj1kGwJuqHIlhJlCXq8EOITEsdqCXLEbbr8FisfFkTo+vBZRFZwERNEFFkCiw90nxJtCalxQmzegltCzVyP1RJq5HZ8AABuNZr0628DMwAAAABJRU5ErkJggg==");
+            background-repeat: no-repeat;background-position: right center;
+        }
+        .workinput {width: 240px;line-height: 20px;border: 1px #A5D2EC solid;border-radius:4px;padding: 5px;background-color: #fff;float: left; font-size: 14px;}
+        .wstxt { height: 30px;  line-height: 30px;  display: block;  float: left;  }
+
+    </style>
+</head>
+<body>
+<div class="doctop">
+    <span class="logo" title="JEUI"></span>
+    <div class="navs je-f16"><ul id="topnav"></ul></div>
+</div>
+<div class="docleft"><ul id="leftnav"></ul></div>
+<div class="doccenter cnav">
+
+    <div class="apilist f14">
+        <h2 class="tits je-f18">基础参数</h2>
+        <ul>
+            <li><a href="#0">注意事项</a></li>
+            <li><a href="#1">核心方法</a></li>
+            <li><a href="#2">使用方法</a></li>
+            <li><a href="#3">支持日期格式类型</a></li>
+            <li><a href="#4">功能演示</a></li>
+            <li><a href="#language">多语言设置 language</a></li>
+            <li><a href="#fixedCell">日历固定 fixedCell</a></li>
+            <li><a href="#isvalid">有效无效日期 isvalid</a></li>
+            <li><a href="#hmsSetVal">设置默认时间 hmsSetVal</a></li>
+            <li><a href="#trigger">事件触发 trigger</a></li>
+            <li><a href="#minmax">最小最大日期</a></li>
+            <li><a href="#festival">节日农历 festival</a></li>
+            <li><a href="#timeStampDate">日期时间戳转换</a></li>
+            <li><a href="#5">日期风格样式</a></li>
+            <li><a href="#6">初始日期加减N</a></li>
+            <li><a href="#7">日期特殊控制</a></li>
+            <li><a href="#8">日期加减N天</a></li>
+            <li><a href="#9">自定义日期、标注点</a></li>
+            <li><a href="#10">获取 年 月 日 星期</a></li>
+            <li><a href="#11">返回预设日期</a></li>
+            <li><a href="#12">限制时分秒</a></li>
+            <li><a href="#13">开始结束日期、日期联动</a></li>
+        </ul>
+    </div>
+    <h3 class="je-f20 je-pb15">jeDate日期控件 说明</h3>
+    <blockquote class="je-quote je-f14">
+        jeDate除了包含 多语言、日历固定、有效无效日期、日期时间戳转换、日期加减、限制时分秒、初始化日期加减N、日期标注点、输入框可以直接输入时间、设定年月（YYYY-MM）、日期范围限制、开始日期设定、自定义日期格式、当天的前后若干天返回、时分秒选择、智能响应、自动纠错、节日识别，操作等常规功能外，根据不同的日期格式，显示不同内容，还拥有更多趋近完美的解决方案。<br/>
+        <span class="je-green">您可以免费将她用于任何个人项目。但是不能去除头部信息。</span> QQ群：516754269<br/>
+        <span class="je-red">JEUI 已经集成jeDate控件，也可以下载独立的jeDate控件。</span>
+        <span class="je-red je-pl30">此为PC日期控件，非手机日期控件</span><br/><br/>
+        <p class="je-f16">
+            独立jeDate下载：<a href="http://www.jemui.com/jedate/download/jedate-3.8.5.zip" class="je-btn je-bg-green je-btn-small je-white je-f14 jedatedown">官网下载</a>
+            <a href="https://github.com/singod/jeDate" class="je-btn je-bg-green je-btn-small je-white je-f14 je-ml30 jedatedown">Github下载</a>
+            <a target="_blank" href="https://github.com/singod/jeDate/stargazers" class="je-mr30">
+                <img src="https://img.shields.io/github/stars/singod/jeDate.svg?style=social" height="30">
+            </a>
+            当前版本：<cite class="je-mr30" id="version">0</cite>
+            <span>下载次数：<cite id="downnum">0</cite>次</span>
+        </p><br/>
+    </blockquote>
+    <div class="je-ovh">
+        <div class="je-fl je-ovh">
+            <p class="je-pt8"><img src="images/ggzz.gif"></p>
+            <p class="je-pt30"><img src="images/ggzz.gif"></p>
+        </div>
+        <div class="je-fr"><img src="images/weixin.png" width="180"><img src="images/zhifubao.png" width="180"></div>
+    </div>
+    <h3 class="je-f20 je-pt15 je-pb15">更新日志 <span class="je-f14 je-green je-ml30">更新时间：2017-06-20</span></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-red">0、增加 “isdocScroll”，在 document 上滚动隐藏的设置,(多个调用无效)</span><br/>
+        <span class="je-red">1、修复 “$.nowDate” 因加减天数（DD）出现的问题，同时修改 nowDate 函数，兼容旧版本的使用方法（只对天有效）</span><br/>
+        <span class="je-red">2、修复 “$.timeStampDate” 日期 与 时间戳 相互转换，出现的问题</span><br/>
+        <span class="je-red">3、更改 “insTrigger” 为 “trigger” 使用更灵活</span><br/>
+        <span class="je-red">4、删除 “$.addDate” 使用 “$.nowDate” 来代替</span><br/>
+        5、修复因最小最大日期不全造成的问题<br/>
+        6、修改了一些发现的问题<br/>
+        7、更多功能自己去体验<br/>
+    </blockquote>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="0">注意事项</a> </h3>
+    <blockquote class="je-quote je-f14">
+        1、解压后，将jedate整个文件放至您项目的任意目录<br/>
+        <span class="je-red">2、控件不支持选周</span><br/>
+        <span class="je-mt10 je-f16 je-g3 je-ovh">浏览器兼容，下面是我们的主要兼容目标</span><br/>
+        1、IE8 或者 IE8以上 (Windows), <span class="je-red">IE8以下浏览器不兼容</span><br/>
+        2、Safari (Mac)<br/>
+        3、Chrome (Windows, Mac, Linux)<br/>
+        4、Firefox (Windows, Mac,  Linux)<br/>
+        5、谷歌内核(webkit)浏览器，如360浏览器，搜狗浏览器，QQ浏览器等
+    </blockquote>
+
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="1">核心方法（配置）：jeDate(options)</a></h3>
+    <blockquote class="je-quote je-f14">
+        options是一个对象，它包含了以下key: '默认值'
+    </blockquote>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+    skinCell:"jedateblue",                      //日期风格样式，默认蓝色
+    format:"YYYY-MM-DD hh:mm:ss",               //日期格式
+    minDate:"1900-01-01 00:00:00",              //最小日期
+    maxDate:"2099-12-31 23:59:59",              //最大日期
+    language:{                                  //多语言设置
+        name  : "cn",
+        month : ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+        weeks : [ "日", "一", "二", "三", "四", "五", "六" ],
+        times : ["小时","分钟","秒数"],
+        clear : "清空",
+        today : "今天",
+        yes   : "确定",
+        close : "关闭"
+    },
+    isdocScroll:true,                           //判断是否作用在document绑定Scroll滚动，弹层是否关闭
+    fixedCell:"",                               //日历固定在页面中的ID(ID是唯一性的)，字符中不能包含 # 与 . 这样的，默认值为空
+    trigger:"click",                            //是否为内部触发事件，默认为内部触发事件
+    position:[],                                //自定义日期弹层的偏移位置，长度为0，弹层自动查找位置
+    hmsSetVal:{},                               //设置默认时分秒 {hh:00,mm:00,ss:00}
+    startMin:"",                                //清除日期后返回到预设的最小日期
+    startMax:"",                                //清除日期后返回到预设的最大日期
+    isvalid:[],                                 //有效日期与非有效日期 ["3,4,8,10",true]
+    isinitVal:false,                            //是否初始化时间，默认不初始化时间
+    initAddVal:{},                              //初始化时间，加减 天 时 分
+    isTime:true,                                //是否开启时间选择
+    hmsLimit:true,                              //时分秒限制
+    ishmsVal:true,                              //是否限制时分秒输入框输入，默认可以直接输入时间
+    isClear:true,                               //是否显示清空
+    isToday:true,                               //是否显示今天或本月
+    isok:true,                                  //是否显示确定按钮
+    clearRestore:true,                          //清空输入框，返回预设日期，输入框非空的情况下有效
+    festival:false,                             //是否显示农历节日
+    fixed:true,                                 //是否静止定位，为true时定位在输入框，为false时居中定位
+    zIndex:2099,                                //弹出层的层级高度
+    marks:null,                                 //给日期做标注
+    choosefun:function(elem, val, date) {},     //选中日期后的回调, elem当前输入框ID, val当前选择的值, date当前完整的日期值
+    clearfun:function(elem, val) {},            //清除日期后的回调, elem当前输入框ID, val当前选择的值
+    okfun:function(elem, val, date) {},         //点击确定后的回调, elem当前输入框ID, val当前选择的值, date当前完整的日期值
+    success:function(elem) {},                  //层弹出后的成功回调方法, elem当前输入框ID
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="2">使用方法</a></h3>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+    //普通方法调用方式/
+
+    &ltscript type="text/javascript">
+    $(function () {
+        $("#test").jeDate({
+            format:"YYYY-MM-DD",
+            isTime:false,
+            minDate:"2014-09-19 00:00:00"
+        })
+        //或者为这样的
+        $.jeDate("#test",{
+            format:"YYYY-MM-DD",
+            isTime:false,
+            minDate:"2014-09-19 00:00:00"
+        })
+    });
+    //requirejs方法调用方式
+
+    requirejs.config({
+        paths : {
+            jquery : 'js/jquery-1.7.2',
+            jedate : 'jedate/jquery.jedate'
+        }
+    });
+    require([ 'jquery','jedate'],function($) {
+        $("#test").jeDate({
+            format:"YYYY-MM-DD",
+            isTime:false,
+            minDate:"2014-09-19 00:00:00"
+        })
+        //或者为这样的
+        $.jeDate("#test",{
+            format:"YYYY-MM-DD",
+            isTime:false,
+            minDate:"2014-09-19 00:00:00"
+        })
+    })
+    &lt/script>
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15">使用对象</h3>
+    <blockquote class="je-quote je-f14">可以使用在文本框与非文本框上：如 input 、 DIV，建议使用 “input” 标签</blockquote>
+    <pre class="prettyprint lang-HTML linenums:1">
+&ltinput id="indate" type="text" placeholder="请选择"  readonly>
+&ltdiv id="dateinfo">&ltdiv>
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="3">支持格式类型</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-red">日期格式 可以随意组合，下面随意列出几种格式：</span><br/>
+        1、 YYYY-MM-DD hh:mm:ss &nbsp;&nbsp;或者&nbsp;&nbsp; MM-DD-YYYY hh:mm:ss &nbsp;&nbsp;或者&nbsp;&nbsp; MM/DD/YYYY hh:mm:ss<br/>
+        2、 YYYY-MM-DD hh:mm &nbsp;&nbsp;或者&nbsp;&nbsp; MM-DD-YYYY hh:mm &nbsp;&nbsp;或者&nbsp;&nbsp; MM/DD/YYYY hh:mm<br/>
+        3、 YYYY-MM-DD hh &nbsp;&nbsp;或者&nbsp;&nbsp; MM-DD-YYYY hh &nbsp;&nbsp;或者&nbsp;&nbsp; MM/DD/YYYY hh<br/>
+        4、 YYYY-MM-DD &nbsp;&nbsp;或者&nbsp;&nbsp; MM-DD-YYYY &nbsp;&nbsp;或者&nbsp;&nbsp; MM/DD/YYYY<br/>
+        5、 YYYY-MM<br/>
+        6、 YYYY<br/>
+        7、 hh:mm:ss<br/>
+        8、 hh:mm<br/>
+        9、 hh<br/>
+        10、 YYYY-MM-DD hh:zz<br/>
+        11、 hh:zz<br/>
+        <span class="je-red">
+            注意：zz 的含义 就是补全00<br/>
+            例如 YYYY-MM-DD hh  得到的是 2017-05-02 10<br/>
+            如果 YYYY-MM-DD hh:zz  得到的是 2017-05-02 10:00
+        </span>
+    </blockquote>
+
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="4">功能演示</a></h3>
+    <blockquote class="je-quote je-f14">
+        当格式为 hh:mm:ss 或者 hh:mm 的时候，今天按钮就被隐藏了！
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt">（YYYY年MM月DD日 hh:mm:ss）格式：</span><input class="workinput wicon je-mr25" id="ymd01" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly>
+            <span class="wstxt">（YYYY年MM月DD日 hh:mm）格式：</span><input class="workinput wicon je-mr25" id="ymd02" type="text" placeholder="YYYY年MM月DD日 hh:mm"  readonly>
+        </p>
+
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt">年（YYYY）：</span><input class="workinput wicon je-mr25" id="ymnian" type="text" placeholder="YYYY"  readonly>
+            <span class="wstxt">时分秒（hh:mm:ss）：</span><input class="workinput wicon je-mr25" id="hm01" type="text" placeholder="hh:mm:ss"  readonly>
+            <span class="wstxt">时分（hh:mm）：</span><input class="workinput wicon je-mr25" id="hm02" type="text" placeholder="hh:mm"  readonly>
+        </p>
+
+        <!--<p class="mb15 ovh">-->
+        <!--<span class="wstxt">直接显示（YYYY-MM-DD hh:mm:ss）格式：</span><input class="workinput wicon mr25" id="showStyle" type="text" placeholder="YYYY-MM-DD hh:mm:ss"  readonly>-->
+        <!--<span class="wstxt">直接显示（YYYY-MM-DD hh:mm:ss）格式：</span><input class="workinput wicon mr25" type="text" placeholder="YYYY-MM-DD hh:mm:ss"  readonly>-->
+        <!--</p>-->
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+
+【绑定ID】
+&ltinput class="workinput wicon" id="test1" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss" readonly>
+&ltinput class="workinput wicon mr25" id="texthms" type="text" placeholder="hh:mm:ss"  readonly>
+
+【jeDate调用】
+//点击显示（YYYY年MM月DD日 hh:mm:ss）格式
+$("#ymd01").jeDate({
+    isinitVal:true,
+    festival: true,
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+
+//点击显示（YYYY年MM月DD日 hh:mm）格式
+$.jeDate("#ymd02",{
+    format:"YYYY年MM月DD日 hh:mm",
+    isTime:true,
+    festival: true,
+    minDate:"2014-09-19 00:00:00"
+})
+
+//点击显示 YYYY年格式
+$("#ymnian").jeDate({
+    isinitVal:true,
+    format:"YYYY年"
+});
+
+//点击显示 时分秒（hh:mm:ss）格式
+$("#hm01").jeDate({
+	isinitVal:true,
+	format:"hh:mm:ss"
+});
+
+//点击显示 时分（hh:mm）格式
+$.jeDate("#hm02",{
+	format:"hh:mm"
+});
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="language">多语言设置 language</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">language 的参数是一个对象（Object）</span><br/>
+        name  : "cn", &nbsp;&nbsp;&nbsp;&nbsp; name是一种语言的名称<br/>
+        month : ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],<br/>
+        weeks : [ "日", "一", "二", "三", "四", "五", "六" ],<br/>
+        times : ["小时","分钟","秒数"],<br/>
+        clear : "清空",<br/>
+        today : "今天",<br/>
+        yes   : "确定",<br/>
+        close : "关闭"<br/>
+        <span class="je-red">注意：
+            语言设置 不为中文的情况下, 农历不生效，（name = "cn"，农历才生效）<br/>
+            下面是语言设置示例，可做参考：</span>
+    </blockquote>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+
+    //日期 中文 语言设置
+    language:{
+        name  : "cn",
+        month : ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+        weeks : [ "日", "一", "二", "三", "四", "五", "六" ],
+        times : ["小时","分钟","秒数"],
+        clear : "清空",
+        today : "今天",
+        yes   : "确定",
+        close : "关闭"
+    }
+
+    //日期 英文 语言设置
+    language:{
+        name  : "en",
+        month : ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+        weeks : [ "SUN","MON","TUR","WED","THU","FRI","SAT" ],
+        times : ["Hour","Minute","Second"],
+        clear : "Clear",
+        today : "Today",
+        yes   : "set",
+        close : "Close"
+    }
+
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="fixedCell">日历固定 fixedCell</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">fixedCell 的参数是一个字符串（String）</span><br/>
+        例如这组参数, 默认值 fixedCell: ""，日历固定在页面中的ID(ID是唯一性的)，字符中不能包含 # 与 . 这样的，默认值为空<br/>
+        例如 我要固定一个日历在页面中，fixedCell: "refix"，这里的 "refix" 是你页面中的 ID<br/><br/>
+        <span class="je-red">注意：下面是日历固定示例，可做参考：</span>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt fl je-mr8">固定日历01：</span><input class="workinput wicon je-mr25" id="gfix01" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl je-mr8">固定日历02：</span><input class="workinput wicon je-mr25" id="gfix02" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+        <p class="je-mb15 je-ovh">
+        <div class="je-fl je-ovh je-mr30" id="fixone"></div>
+        <div class="je-fl je-ovh je-mr30" id="fixtwo"></div>
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+//固定日历01
+&ltdiv id="fixone">&lt/div>
+$("#gfix01").jeDate({
+    fixedCell: "fixone",
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"YYYY年MM月DD日 hh:mm:ss",
+    zIndex:3000
+})
+
+//固定日历02
+&ltdiv id="fixtwo">&lt/div>
+$("#gfix02").jeDate({
+    isinitVal:true,
+    initAddVal:{MM:"+3"},   //初始化日期加3个月
+    fixedCell: "fixtwo",
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"YYYY年MM月DD日 hh:mm:ss",
+    zIndex:3000
+})
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="isvalid">有效日期与无效日期 isvalid</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">isvalid 的参数是一个数组（Array）</span><br/>
+        例如这组参数, 默认值 isvalid: [ ]，如果长度为0，则有效日期与无效日期不起作用<br/>
+        例如 ["3,4,8,10",true]，参数2为 true 时，其中的"3,4,8,10"是查找日期中包含的 有效日期<br/>
+        例如 ["3,4,8,10",flase]，参数2为 flase 时，其中的"3,4,8,10"是查找日期中包含的 无效日期<br/><br/>
+        <span class="je-red">注意：下面是语言设置示例，可做参考：</span>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt fl je-mr8">有效日期：</span><input class="workinput wicon je-mr25" id="yesdate" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl je-mr8">无效日期：</span><input class="workinput wicon je-mr25" id="nodate" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+//有效日期
+$("#yesdate").jeDate({
+    isvalid:["3,4,8,10",true],  //这里为true
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"YYYY年MM月DD日 hh:mm:ss",
+    zIndex:3000
+})
+
+//无效日期
+$("#nodate").jeDate({
+    isvalid:["3,4,8,10",false],   //这里为false
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"YYYY年MM月DD日 hh:mm:ss",
+    zIndex:3000
+})
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="hmsSetVal">设置默认时间 hmsSetVal</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">hmsSetVal 的参数是一个对象（Object）</span><br/>
+        例如这组参数, 默认值 hmsSetVal: { }，如果为空对象，则默认时间不起作用<br/>
+        例如 {hh:10,mm:00,ss:00}，其中 hh是设置小时， mm是设置分钟， ss是设置秒数<br/><br/>
+        <span class="je-red">注意：下面是默认时间设置示例，可做参考：</span>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh je-f14">
+            <span class="wstxt fl je-mr8">时分秒设置为 （00:00:00）：</span><input class="workinput wicon je-mr25" id="sfmz" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl je-mr8">时分秒设置为 （10:30:00）：</span><input class="workinput wicon je-mr25" id="sfmsd" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+//时分秒设置为 00:00:00
+$("#sfmz").jeDate({
+    hmsSetVal:{hh:00,mm:00,ss:00},
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"YYYY年MM月DD日 hh:mm:ss",
+    zIndex:3000
+})
+
+//时分秒设置为 10:30:00
+$("#sfmsd").jeDate({
+    isinitVal:true,
+    hmsSetVal:{hh:10,mm:30,ss:00},
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"hh:mm:ss",
+    zIndex:3000
+})
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="trigger">事件触发 trigger</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f14 je-red">已经将原来的 “insTrigger” 改为 “trigger”</span><br/>
+        <span class="je-f16 je-green">trigger 的参数是一个字符串（String）</span><br/>
+        例如这个参数, 默认值 trigger: "click"，其值可以是 "click" 或者 "click mouseenter focus" 或者 false<br/>
+        trigger 的参数可绑定一个或多个事件，当参数为 false 的时候内部事件不起作用<br/><br/>
+        <span class="je-red">注意：下面是事件触发设置示例，可做参考：</span>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh je-f14">
+            <span class="wstxt fl je-mr8">设置事件（"click mouseenter"）：</span><input class="workinput wicon je-mr25" id="yesclick" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl je-mr8">不设置内部事件（false）：</span><input class="workinput wicon je-mr25" id="notrigger" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly onclick="$.jeDate('#notrigger',{trigger:false,isTime:true,format:'YYYY年MM月DD日 hh:mm:ss'})" >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+
+//设置事件（"mouseenter"）
+$("#yesclick").jeDate({
+    trigger: "mouseenter",  //可绑定一个或多个事件
+    minDate: '2016-06-16',
+    maxDate: '2025-06-16',
+    format:"YYYY年MM月DD日 hh:mm:ss",
+    zIndex:3000
+})
+
+//不设置内部事件（false）
+&ltinput id="notrigger" type="text"  readonly onclick="$.jeDate('#notrigger',{trigger:false,isTime:true,format:'YYYY年MM月DD日 hh:mm:ss'})" >
+
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="minmax">最小最大日期</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span>minDate &nbsp;&nbsp;最小日期</span><br/>
+        <span>maxDate &nbsp;&nbsp;最大日期</span><br/>
+        最小日期 minDate 可以写成 minDate: "1900-01-01 00:00:00" ,也可以写成 minDate: "1900-01-01"<br/>
+        最大日期 maxDate 可以写成 maxDate: "2099-12-31 23:59:59" ,也可以写成 maxDate: "2099-12-31"<br/><br/>
+        <span class="je-red">注意：最少到 年月日</span>
+    </blockquote>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="festival">节日农历 festival</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">festival 的参数是一个布尔值，是否显示农历节日</span><br/><br/>
+        例如这个参数, 默认值 festival: false，如果值为 true 表示显示农历节日<br/>
+        如果 语言设置里面的 name 等于 "cn"， 农历节日 festival:true 才有效<br/>
+        如果 语言设置里面的 name 不等于 "cn"， 农历节日就算 festival:true 也无效<br/><br/>
+    </blockquote>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="timeStampDate">日期与时间戳相互转换 $.timeStampDate</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">$.timeStampDate 的参数有3个</span><br/><br/>
+        $.timeStampDate(date, bool, format)，date 是日期或者时间戳，bool 是布尔值（true、false），format 是日期格式 可以不写<br/>
+        日期 转 时间戳 $.timeStampDate("2017-11-16 10:35:22",false) 得到 1513391722<br/>
+        时间戳 转 日期 $.timeStampDate("1513391722",true) 得到 2017-11-16 10:35:22<br/><br/>
+    </blockquote>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+
+    //日期 转 时间戳
+    $.timeStampDate("2017-11-16 10:35:22",false)    //得到 1513391722
+
+    //时间戳 转 日期
+    $.timeStampDate("1513391722",true)    //得到 2017-11-16 10:35:22
+
+</pre>
+
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="5">日期风格样式</a></h3>
+    <blockquote class="je-quote je-f14">
+        skinCell，风格调用，CSS中增加了3种风格（红、绿、蓝）
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt fl je-mr8">蓝色风格：</span><input class="workinput wicon je-mr25" id="skinblue" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl je-mr8">红色风格：</span><input class="workinput wicon je-mr25" id="skinred" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl je-mr8">绿色风格：</span><input class="workinput wicon je-mr25" id="skingreen" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+风格样式（jedateblue、jedatered、jedategreen）
+//蓝色风格
+$("#skinblue").jeDate({
+    isinitVal:true,
+    skinCell:"jedateblue",
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+//红色风格
+$.jeDate("#skinred",{
+    skinCell:"jedatered",
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+//绿色风格
+$("#skingreen").jeDate({
+    skinCell:"jedategreen",
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="6">初始化日期加减N</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-f16 je-green">initAddVal 的参数是一个对象（Object）</span><br/>
+        initAddVal ：{ }，实则它包含 （年）YYYY、 （月）MM、 （日）DD、 （时）hh、 （分）mm、 （秒）ss<br/>
+        如果对象为空，则初始化日期为当前日期<br/>
+        例如我要月数加3个月，天数减2天，可以写成：initAddVal: {MM:"+3",DD:"-2"}<br/><br/>
+        <span class="je-red">注意：initAddVal 必须配合 isinitVal 且 isinitVal 为 true，才有作用</span>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="mb15 ovh">
+            <span class="wstxt fl mr8">初始化日期加N天：</span><input class="workinput wicon je-mr25" id="chus01" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+            <span class="wstxt fl mr8">初始化日期加N小时：</span><input class="workinput wicon je-mr25" id="chus02" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+$("#chus01").jeDate({
+    isinitVal:true,
+    initAddVal:{MM:"+3"},   //初始化日期加3个月
+    festival: true,
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+
+$("#chus02").jeDate({
+    isinitVal:true,
+    initAddVal:{DD:"-2",hh:"+4"},   //初始化日期减2天加4小时
+    festival: true,
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+
+//注意：initAddVal 必须配合 isinitVal 且 isinitVal 为 true，才有作用
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="7">日期特殊控制</a></h3>
+    <blockquote class="je-quote je-f14">
+        以下的这种方式，时间初始化是不起作用的
+    </blockquote>
+    <div class="je-ovh">
+        <div class="je-mt10 je-mb15 je-ovh je-fl" id="charu" style="width: 50%">
+            <h4 class="je-mb20">第一种方式</h4>
+            <p class="je-mb15 je-ovh">
+                <span class="wstxt je-fl">1、</span><input class="workinput wicon je-mr25" type="text" placeholder="YYYY年MM月DD日 hh:mm"  readonly onclick="testShow(this);">
+                <span class="wstxt" style="background: #A5D2EC;padding: 0 8px;cursor: pointer;" id="onafter">添加一个</span>
+            </p>
+
+        </div>
+        <div class="je-mt10 je-mb15 je-ovh je-fl"  style="width: 50%">
+            <h4 class="je-mb20">第二种方式</h4>
+            <p class="je-mb15 je-ovh">
+                <span class="wstxt je-fl">1、</span><input class="workinput wicon je-mr25" type="text" id="tser01" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly onclick="$.jeDate('#tser01',{trigger:false,isTime:true,format:'YYYY-MM-DD hh:mm:ss'})">
+            </p>
+            <p class="je-mb15 je-ovh">
+                <span class="wstxt je-fl">2、</span><input class="workinput wicon je-mr25" type="text" id="tser02" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly onclick="$.jeDate('#tser02',{trigger:false,isTime:true,format:'YYYY-MM-DD hh:mm:ss'})">
+            </p>
+        </div>
+    </div>
+    <pre class="prettyprint lang-HTML linenums:1">
+【有两种方式】
+
+//第一种方式
+&ltinput class="workinput wicon mr25" type="text" placeholder="YYYY年MM月DD日 hh:mm"  readonly onclick="testShow(this);">
+function testShow(elem){
+    $.jeDate(elem,{
+        trigger:false,
+        format: 'YYYY年MM月DD日 hh:mm',
+        minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+        festival: true,
+        maxDate: '2099-06-16 23:59:59' //最大日期
+    });
+}
+
+//第二种方式
+&ltinput type="text" id="tser01" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly
+    onclick="$.jeDate('#tser01',{trigger:false,isTime:true,format:'YYYY-MM-DD hh:mm:ss'})">
+
+&ltinput type="text" id="tser02" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly
+    onclick="$.jeDate('#tser02',{trigger:false,isTime:true,format:'YYYY-MM-DD hh:mm:ss'})">
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="8">日期加减N天</a></h3>
+    <blockquote class="je-quote je-f14">
+        $.nowDate(str,format,date)<br/>
+        参数一（str）是一个加减日期的对象，实则它包含 （年）YYYY、 （月）MM、 （日）DD、 （时）hh、 （分）mm、 （秒）ss<br/>
+        参数二（format）是我们想要的日期格式，例如：'YYYY-MM-DD hh:mmss'<br/>
+        参数三（date）是我们选中日期得到的值<br/><br/>
+        以下的这种方式，时间初始化是不起作用的
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh" id="charu">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt je-fl je-mr8">获取选中时间加N天：</span><input class="workinput wicon je-mr25" id="xuann" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+$.jeDate('#xuann',{
+    format: 'YYYY-MM-DD hh:mm:ss',
+    choosefun:function(elem, val, date) {
+         elem.val($.nowDate({DD:"+3"},'YYYY-MM-DD hh:mm:ss',val));  //在得到值的基础上加3天
+    }
+});
+
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="9">自定义日期</a></h3>
+    <div class="je-mt10 je-mb10 je-ovh">
+        <span class="wstxt">自定义年月（YYYY-MM）格式：</span><input type="text" class="workinput wicon je-mr25" id="custom1" readonly>
+        <span class="wstxt">给日期标注点：</span><input type="text" class="workinput wicon je-mr25" placeholder="给日期标注点" id="custom3" readonly>
+        <span class="wstxt">点击图标：</span><input class="workinput" id="test2" type="text" placeholder="点击图标显示" readonly>
+        <span class="wicon" style="width: 30px;height: 30px;display: block;float: left;" onclick="$.jeDate('#test2',{trigger:false,isTime:true,format:'YYYY-MM-DD hh:mm:ss'})"></span>
+    </div>
+    <div class="je-mb15 je-ovh">
+        <span class="wstxt">限定在昨天到明天：</span><input class="workinput wicon je-mr25" id="custom2" type="text" placeholder="限定在昨天到明天" readonly>
+        <span class="wstxt">限定在今天：</span><input class="workinput wicon je-mr25" id="customToday" type="text" placeholder="限定在今天" readonly>
+        <span class="wstxt">日期（YYYYMMDD）：</span><input class="workinput wicon je-mr25" id="customymd" type="text" placeholder="YYYYMMDD" readonly>
+    </div>
+    <pre class="prettyprint lang-HTML linenums:1">
+【自定义日期格式】
+&ltdiv class="workinput wicon" id="custom1">&lt/div>
+&ltscript>
+$('#custom1').jeDate({
+    isinitVal:true,
+    format: 'YYYY/MM' // 分隔符可以任意定义，该例子表示只显示年月
+});
+
+
+【给日期标注点】
+&ltdiv class="workinput wicon" id="custom3">&lt/div>
+$('#custom3').jeDate({
+    format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+    marks:['2015-01-03','2016-01-01','2016-01-10','2016-01-15','2016-02-15','2016-03-10','2016-04-18'],
+    //marks给日期做标注，特别说明（日期不足2位的必须加0，如：'2015-1-3' 要写成 '2015-01-03' 否则标注不成功）
+});
+
+【图标触发日期】
+&ltinput class="workinput" id="test2" type="text" placeholder="请选择"  readonly>
+&ltspan class="wicon" onClick="$.jeDate('#test2'{trigger:false,isTime:true,format:'YYYY-MM-DD hh:mm:ss'})">&lt/span>
+
+【日期范围限定在昨天到明天】
+&ltinput class="workinput wicon" id="custom2" type="text" placeholder="请选择" readonly>
+$('#custom2').jeDate({
+    format:"YYYY-MM-DD",
+    minDate: $.nowDate({DD:"-1"}), //0代表今天，-1代表昨天，-2代表前天，以此类推
+    maxDate: $.nowDate({DD:"+1"}) //1代表明天，2代表后天，以此类推
+});
+//或者是如下
+$('#custom2').jeDate({
+    format:"YYYY-MM-DD",
+    minDate: $.nowDate(-1), //0代表今天，-1代表昨天，-2代表前天，以此类推
+    maxDate: $.nowDate(1) //1代表明天，2代表后天，以此类推
+});
+
+【日期范围限定在今天】
+$('#customToday').jeDate({
+    format:"YYYY-MM-DD",
+    minDate: $.nowDate({DD:0}), //0代表今天，-1代表昨天，-2代表前天，以此类推
+    maxDate: $.nowDate({DD:0}) //1代表明天，2代表后天，以此类推
+});
+//或者是如下
+$('#customToday').jeDate({
+    format:"YYYY-MM-DD",
+    minDate: $.nowDate(0), //0代表今天，-1代表昨天，-2代表前天，以此类推
+    maxDate: $.nowDate(0) //1代表明天，2代表后天，以此类推
+});
+
+【日期 YYYYMMDD 】
+$('#customymd').jeDate({
+    isinitVal:true,
+    format:"YYYYMMDD"
+});
+&lt/script>
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="10">获取 年 月 日 星期</a></h3>
+    <blockquote class="je-quote je-f14">
+        <span class="je-red je-f16">$.getLunar(time)  返回以下值</span><br/>
+        nMonth &nbsp;&nbsp;&nbsp;&nbsp;    //农历月<br/>
+        nDays &nbsp;&nbsp;&nbsp;&nbsp;     //农历日<br/>
+        yYear &nbsp;&nbsp;&nbsp;&nbsp;     //阳历年<br/>
+        yMonth &nbsp;&nbsp;&nbsp;&nbsp;    //阳历月<br/>
+        yDays &nbsp;&nbsp;&nbsp;&nbsp;     //阳历日<br/>
+        cWeek &nbsp;&nbsp;&nbsp;&nbsp;     //汉字星期几<br/>
+        nWeek &nbsp;&nbsp;&nbsp;&nbsp;     //数字星期几<br/>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt fl je-mr8">获取选择日期的星期：</span><input class="workinput wicon mr25" id="goweeks" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+$.jeDate('#goweeks',{
+    festival: true,
+    format: 'YYYY年MM月DD日 hh:mm:ss'，
+    choosefun: function(elem,datas){
+        alert($.getLunar(datas).cWeek);
+    }
+});
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="11">清空输入框，返回预设日期</a></h3>
+    <blockquote class="je-quote je-f14">
+        startMin:"", 清除日期后返回到预设的最小日期<br/>
+        startMax:"", 清除日期后返回到预设的最大日期<br/>
+        返回到预设的日期，需要clearRestore为true,且输入框非空的情况下有效<br/>
+        <span class="je-red">配合开始日期与结束日期，效果最好</span>
+    </blockquote>
+    <div class="je-mt10 je-mb15 je-ovh">
+        <p class="je-mb15 je-ovh">
+            <span class="wstxt je-fl je-mr8">返回预设日期：</span><input class="workinput wicon je-mr25" id="restore" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss"  readonly >
+        </p>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+$.jeDate('#restore',{
+    minDate:$.nowDate({DD:0}),          //设定最小日期为当前日期,
+    maxDate:'2019-06-16 23:59:59',  //最大日期
+    startMin:$.nowDate({DD:"-3"}),        //设定返回预设最小日期为当前日期的前3天，（或者直接设置为最小日期$.nowDate(0)），这里随自己设置
+    startMax:'2019-06-16 23:59:59', //设定返回预设最大日期与（最大日期）相同
+    format: 'YYYY年MM月DD日 hh:mm:ss'
+});
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="12">限制时分秒</a></h3>
+    <blockquote class="je-quote je-f14">
+        hmsLimit，为true时表示正常状态，为false时限制时分秒起作用<br/>
+        请注意时间限制范围<br/>
+        <span class="je-red">minDate:'2012-06-16 08:05:05'</span>，<br/>
+        <span class="je-red">maxDate:'2020-06-16 20:50:50'</span>，<br/>
+        例如 其中 <span class="je-red">08:05:05 -- 20:50:50</span> 是时间限制范围<br/>
+        灰色部分为不可选状态
+    </blockquote>
+    <div class="je-mt10 je-mb10 je-ovh">
+        <span class="wstxt">YYYY-MM-DD hh:mm:ss 限制时分秒：</span><input type="text" class="workinput wicon je-mr25" id="ymdlimthms" placeholder="YYYY-MM-DD hh:mm:ss" readonly>
+        <span class="wstxt">hh:mm:ss 限制时分秒：</span><input type="text" class="workinput wicon je-mr25" id="limthms" placeholder="hh:mm:ss" readonly>
+    </div>
+    <pre class="prettyprint lang-JavaScript linenums:1">
+$.jeDate('#ymdlimthms',{
+    festival: true,
+    hmsLimit:false,
+    format: 'YYYY-MM-DD hh:mm:ss',
+    minDate:"2012-06-16 08:05:05", //最小日期
+    maxDate:"2020-06-16 20:50:50" //最大日期
+});
+$.jeDate('#limthms',{
+    festival: true,
+    hmsLimit:false,
+    format: 'hh:mm:ss',
+    minDate:"2012-06-16 08:05:05", //最小日期
+    maxDate:"2020-06-16 20:50:50" //最大日期
+});
+</pre>
+    <h3 class="je-f20 je-pt15 je-pb15"><a name="13">开始日期与结束日期、日期联动</a></h3>
+    <blockquote class="je-quote je-f14">
+        点击选择开始日期后，结束日期联动可以自动弹出
+    </blockquote>
+    <div class="je-mt10 je-mb10 je-ovh">
+        <span class="wstxt">开始日期：</span><input type="text" class="workinput wicon je-mr25" id="inpstart" placeholder="选择开始日期" readonly>
+        <span class="wstxt">结束日期：</span><input type="text" class="workinput wicon je-mr25" id="inpend" placeholder="选择结束日期" readonly>
+    </div>
+    <pre class="prettyprint lang-HTML linenums:1" style="margin-bottom: 50px;">
+【自定义日期格式】
+&ltspan class="wstxt">开始日期：&lt/span>&ltinput type="text" class="workinput wicon" id="inpstart" readonly>
+&ltspan class="wstxt">结束日期：&lt/span>&ltinput type="text" class="workinput wicon" id="inpend" readonly>
+&ltscript>
+var start = {
+    format: 'YYYY-MM-DD hh:mm:ss',
+    minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+    isinitVal:true,
+    festival:true,
+    ishmsVal:false,
+    maxDate: $.nowDate({DD:0}), //最大日期
+    choosefun: function(elem, val, date){
+        end.minDate = date; //开始日选好后，重置结束日的最小日期
+        endDates();
+    }
+};
+var end = {
+    format: 'YYYY年MM月DD日 hh:mm:ss',
+    minDate: $.nowDate({DD:0}), //设定最小日期为当前日期
+    festival:true,
+    maxDate: '2099-06-16 23:59:59', //最大日期
+    choosefun: function(elem, val, date){
+        start.maxDate = date; //将结束日的初始值设定为开始日的最大日期
+    }
+};
+//这里是日期联动的关键
+function endDates() {
+    //将结束日期的事件改成 false 即可
+    end.trigger = false;
+    $("#inpend").jeDate(end);
+}
+$('#inpstart').jeDate(start);
+$('#inpend').jeDate(end);
+
+//或者是
+$.jeDate('#inpstart',start);
+$.jeDate('#inpend',end);
+&lt/script>
+</pre>
+    <!----------------end------------->
+
+
+</div>
+
+<div class="gotop" id="toTop"></div>
+<script src="js/loadnav.js" type="text/javascript"></script>
+<script src="js/jedate-demo.js" type="text/javascript"></script>
+</body>
+</html>
